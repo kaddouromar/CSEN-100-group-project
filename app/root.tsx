@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect } from "react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -25,6 +26,11 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  // load bootstrap JS bundle only in the browser so offcanvas/toggler work
+  useEffect(() => {
+    import("bootstrap/dist/js/bootstrap.bundle.min.js").catch(() => {});
+  }, []);
+
   return (
     <html lang="en">
       <head>
