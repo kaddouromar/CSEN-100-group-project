@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 
+// Lazy-load the map to avoid SSR errors — MapComponent is in the same folder
+const MapComponent = React.lazy(() => import("./MapComponent"));
+
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // Only true in browser
+  }, []);
+
   return (
     <>
       <header className="topbar">
@@ -14,11 +23,14 @@ export default function Home() {
       </header>
 
       <div className="container">
+        {/* LEFT SIDE */}
         <div className="left">
           <div className="header">
             <h1>University Event Discovery App</h1>
             <p>
-              The event action for unittesting evening to reverral the enterimed tipes of your impekle to cuntine rindi bodr, entimatics and event percionaltions.
+              The event action for unittesting evening to reverral the enterimed
+              tipes of your impekle to cuntine rindi bodr, entimatics and event
+              percionaltions.
             </p>
           </div>
 
@@ -38,14 +50,20 @@ export default function Home() {
           <div className="personalization">
             <h3>Personalizerptions</h3>
             <div className="photos">
-              <img src="/mnt/data/f4e8bc45-9f66-4296-b166-8d03a8b19141.jpeg" alt="preview1" />
-              <img src="/mnt/data/f4e8bc45-9f66-4296-b166-8d03a8b19141.jpeg" alt="preview2" />
+              <img src="/preview1.jpeg" alt="preview1" />
+              <img src="/preview2.jpeg" alt="preview2" />
             </div>
           </div>
         </div>
 
+        {/* RIGHT SIDE */}
         <div className="right">
-          <img className="map" src="/mnt/data/f4e8bc45-9f66-4296-b166-8d03a8b19141.jpeg" alt="map" />
+          <div className="right-panel">
+            {/* Only show MapComponent AFTER hydration */}
+            <React.Suspense fallback={<div>Loading map…</div>}>
+              {isClient && <MapComponent />}
+            </React.Suspense>
+          </div>
         </div>
       </div>
     </>

@@ -1,3 +1,10 @@
+:root {
+  --aub-red: #840132;
+  --aub-white: #ffffff;
+  --muted: #6b6b6b;
+}
+
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,15 +13,15 @@
 }
 
 body {
-  background: #f5f5f5;
-  height: 100vh;
-  overflow: hidden;
+  background: var(--aub-white);
+  color: var(--muted);
+  min-height: 100vh;
 }
 
-/* Top Navigation Bar */
+/* Top Navigation Bar - crimson bar with white logo */
 .topbar {
   width: 100%;
-  padding: 24px 40px;
+  padding: 12px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,12 +29,15 @@ body {
   top: 0;
   left: 0;
   z-index: 10;
-  background: #f5f5f5;
+  background: var(--aub-red);
+  color: var(--aub-white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .logo {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--aub-white);
 }
 
 .hamburger {
@@ -40,95 +50,146 @@ body {
 .hamburger span {
   width: 28px;
   height: 3px;
-  background: #000;
+  background: rgba(255,255,255,0.9);
   border-radius: 6px;
 }
 
-/* Main Layout */
+/* Main layout */
 .container {
   display: flex;
   width: 100%;
-  height: 100vh;
-  padding-top: 100px; /* space under the navbar */
+  box-sizing: border-box;
+  padding: 20px 40px;
+  padding-top: 72px; /* space for fixed topbar */
+  gap: 24px;
+  align-items: flex-start;
 }
 
+/* Left column (content) */
 .left {
-  width: 50%;
-  padding: 60px;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
+  align-items: stretch;
 }
 
+/* Headings */
 .header h1 {
-  font-size: 42px;
-  font-weight: 700;
-  margin-bottom: 12px;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--aub-red);
+  margin-bottom: 8px;
 }
 
 .header p {
-  color: #777;
-  max-width: 480px;
+  color: #4b4b4b;
+  max-width: 680px;
   line-height: 1.6;
 }
 
+/* Tabs */
 .tabs {
   display: flex;
-  gap: 14px;
+  gap: 12px;
 }
 
 .tabs button {
-  padding: 12px 22px;
-  border-radius: 24px;
-  border: 1px solid #ccc;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(132,1,50,0.15);
   background: transparent;
+  color: var(--aub-red);
   cursor: pointer;
+  font-weight: 600;
 }
 
 .tabs .active {
-  background: #000;
-  color: #fff;
-  border-color: #000;
+  background: var(--aub-red);
+  color: var(--aub-white);
 }
 
+/* Filters & personalization */
 .filters h3, .personalization h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--aub-red);
 }
 
 .filters ul {
   list-style: none;
+  color: #444;
 }
 
 .filters li::before {
-  content: "◉ ";
-  color: #bbb;
+  content: "• ";
+  color: var(--aub-red);
+  margin-right: 6px;
 }
 
+/* Photos */
 .personalization .photos {
   display: flex;
-  gap: 20px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .personalization img {
-  width: 45%;
+  width: 160px;
+  height: 120px;
   border-radius: 10px;
   object-fit: cover;
+  border: 2px solid rgba(132,1,50,0.08);
 }
 
-/* Right section */
+/* Right column - fixed side like an image */
 .right {
-  width: 50%;
-  height: 80%;
-  background: #e6e9ee;
+  width: 420px;
+  flex: 0 0 420px;
   display: flex;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Card wrapper for map (clean white card over crimson background) */
+.right-panel {
+  width: 100%;
+  height: calc(100vh - 92px);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--aub-white);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: stretch;
+}
+
+/* Map fills the panel */
 .map {
-  width: 80%;
-  height: 80%;
-  object-fit: contain;
-  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Small screens */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    padding: 16px;
+    padding-top: 72px;
+  }
+  .left, .right {
+    width: 100%;
+    padding: 12px 0;
+  }
+  .right {
+    flex: 0 0 auto;
+  }
+  .right-panel {
+    height: 320px;
+  }
 }
