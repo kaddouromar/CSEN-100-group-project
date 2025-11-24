@@ -6,64 +6,73 @@ const MapComponent = React.lazy(() => import("./MapComponent"));
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true); // Only true in browser
-  }, []);
+  useEffect(() => setIsClient(true), []);
 
   return (
     <>
-      <header className="topbar">
-        <div className="logo">nearU.</div>
-        <div className="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+        <div className="container-fluid">
+          <span className="navbar-brand mb-0 h1">AUB Mediterraneo</span>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            aria-controls="nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
         </div>
-      </header>
+      </nav>
 
-      <div className="container">
-        {/* LEFT SIDE */}
-        <div className="left">
-          <div className="header">
-            <h1>University Event Discovery App</h1>
-            <p>
-              The event action for unittesting evening to reverral the enterimed
-              tipes of your impekle to cuntine rindi bodr, entimatics and event
-              percionaltions.
-            </p>
-          </div>
+      <div className="container-fluid" style={{ paddingTop: 72 }}>
+        <div className="row gx-4">
+          {/* LEFT SIDE */}
+          <main className="col-12 col-md-8">
+            <div className="p-3">
+              <header className="mb-3">
+                <h1 className="h2 text-danger">Campus & Mediterranean Events</h1>
+                <p className="text-secondary">
+                  Discover curated events for the AUB Mediterraneo community —
+                  cultural nights, talks, workshops and local meetups tailored to
+                  students and alumni.
+                </p>
+              </header>
 
-          <div className="tabs">
-            <button className="active">All Events</button>
-            <button>Personalised Events</button>
-          </div>
+              <div className="mb-3">
+                <div className="btn-group" role="group" aria-label="tabs">
+                  <button className="btn btn-outline-danger active">Campus Events</button>
+                  <button className="btn btn-outline-danger">Mediterraneo Picks</button>
+                </div>
+              </div>
 
-          <div className="filters">
-            <h3>Filterv details</h3>
-            <ul>
-              <li>Frankintent cokt quoties, noar routs final directlions</li>
-              <li>Comirution and walking directions</li>
-            </ul>
-          </div>
+              <section className="mb-3">
+                <h3 className="h5 text-danger">Filters</h3>
+                <ul className="ps-3">
+                  <li>Walking-friendly routes</li>
+                  <li>Student discounts & RSVP</li>
+                </ul>
+              </section>
 
-          <div className="personalization">
-            <h3>Personalizerptions</h3>
-            <div className="photos">
-              <img src="/preview1.jpeg" alt="preview1" />
-              <img src="/preview2.jpeg" alt="preview2" />
+              <section>
+                <h3 className="h5 text-danger">Personalized for you</h3>
+                <div className="d-flex flex-wrap gap-3">
+                  <img src="/preview1.jpeg" alt="preview1" className="rounded" style={{ width: 160, height: 120, objectFit: "cover" }} />
+                  <img src="/preview2.jpeg" alt="preview2" className="rounded" style={{ width: 160, height: 120, objectFit: "cover" }} />
+                </div>
+              </section>
             </div>
-          </div>
-        </div>
+          </main>
 
-        {/* RIGHT SIDE */}
-        <div className="right">
-          <div className="right-panel">
-            {/* Only show MapComponent AFTER hydration */}
-            <React.Suspense fallback={<div>Loading map…</div>}>
-              {isClient && <MapComponent />}
-            </React.Suspense>
-          </div>
+          {/* RIGHT SIDE */}
+          <aside className="col-12 col-md-4">
+            <div className="right-panel shadow-sm rounded" style={{ height: "calc(100vh - 92px)", overflow: "hidden" }}>
+              <React.Suspense fallback={<div className="p-3">Loading map…</div>}>
+                {isClient && <MapComponent />}
+              </React.Suspense>
+            </div>
+          </aside>
         </div>
       </div>
     </>
