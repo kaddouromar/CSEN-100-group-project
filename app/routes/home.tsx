@@ -1,55 +1,35 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 
-// Lazy-load the map to avoid SSR errors — MapComponent is in the same folder
+// Import your data (you can also fetch this from a JSON file)
+import data from './data.json';
+
+// Lazy-load the map
 const MapComponent = React.lazy(() => import("./MapComponent"));
-
-// Mock data for events/places
-const mockEvents = [
-  { id: 1, name: "Campus Cultural Night", category: "cultural", location: "Main Campus Hall", date: "2024-03-15" },
-  { id: 2, name: "Mediterranean Food Festival", category: "restaurants", location: "Seaside Plaza", date: "2024-03-16" },
-  { id: 3, name: "Basketball Tournament", category: "sports", location: "University Gym", date: "2024-03-17" },
-  { id: 4, name: "Local Art Exhibition", category: "arts", location: "City Art Museum", date: "2024-03-18" },
-  { id: 5, name: "Alumni Networking", category: "networking", location: "Business Center", date: "2024-03-19" },
-  { id: 6, name: "Pizza & Pasta Night", category: "restaurants", location: "Italian Bistro", date: "2024-03-20" },
-  { id: 7, name: "Yoga Session", category: "sports", location: "Wellness Center", date: "2024-03-21" },
-  { id: 8, name: "Live Jazz Concert", category: "music", location: "Rooftop Bar", date: "2024-03-22" },
-  { id: 9, name: "Tech Workshop", category: "workshops", location: "Innovation Lab", date: "2024-03-23" },
-  { id: 10, name: "Beach Volleyball", category: "sports", location: "Sunset Beach", date: "2024-03-24" },
-];
-
-const categories = [
-  { value: "all", label: "All Categories" },
-  { value: "restaurants", label: "Restaurants & Food" },
-  { value: "sports", label: "Sports & Fitness" },
-  { value: "arts", label: "Arts & Culture" },
-  { value: "music", label: "Music & Entertainment" },
-  { value: "workshops", label: "Workshops & Learning" },
-  { value: "networking", label: "Networking & Social" },
-  { value: "cultural", label: "Cultural Events" },
-];
 
 const EVENTS_PER_PAGE = 5;
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [filteredEvents, setFilteredEvents] = useState(mockEvents);
-  const [visibleEvents, setVisibleEvents] = useState<typeof mockEvents>([]);
+  const [filteredEvents, setFilteredEvents] = useState(data.events);
+  const [visibleEvents, setVisibleEvents] = useState<typeof data.events>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMoreEvents, setHasMoreEvents] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<number | null>(null);
 
   useEffect(() => setIsClient(true), []);
 
   // Filter events based on selected category
   useEffect(() => {
     if (selectedCategory === "all") {
-      setFilteredEvents(mockEvents);
+      setFilteredEvents(data.events);
     } else {
-      setFilteredEvents(mockEvents.filter(event => event.category === selectedCategory));
+      setFilteredEvents(data.events.filter(event => event.category === selectedCategory));
     }
-    setCurrentPage(1); // Reset to first page when filter changes
+    setCurrentPage(1);
+    setSelectedEvent(null); // Reset selected event when filter changes
   }, [selectedCategory]);
 
   // Update visible events when filtered events or page changes
@@ -67,8 +47,14 @@ export default function Home() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleEventClick = (eventId: number) => {
+    setSelectedEvent(eventId);
+    // Scroll to top to see the map movement better
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const getCategoryLabel = (categoryValue: string) => {
-    const category = categories.find(cat => cat.value === categoryValue);
+    const category = data.categories.find(cat => cat.value === categoryValue);
     return category ? category.label : categoryValue;
   };
 
@@ -88,7 +74,6 @@ export default function Home() {
             <span className="brand-text">AUB Mediterraneo</span>
           </div>
           
-          {/* Hamburger Menu */}
           <div className="nav-menu-container">
             <button 
               className={`nav-toggle ${isMenuOpen ? 'active' : ''}`} 
@@ -100,7 +85,6 @@ export default function Home() {
               <span className="toggle-line"></span>
             </button>
 
-            {/* Dropdown Menu */}
             <div className={`nav-dropdown ${isMenuOpen ? 'active' : ''}`}>
               <div className="dropdown-header">
                 <h3>Menu</h3>
@@ -148,12 +132,10 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Overlay for mobile when menu is open */}
       {isMenuOpen && <div className="menu-overlay" onClick={toggleMenu}></div>}
 
       <div className="main-container">
         <div className="content-grid">
-          {/* LEFT SIDE - CONTENT */}
           <main className="content-main">
             <div className="content-wrapper">
               <header className="page-header">
@@ -165,7 +147,6 @@ export default function Home() {
                 </p>
               </header>
 
-              {/* Events List */}
               <section className="events-section">
                 <div className="section-header">
                   <h2 className="section-title">
@@ -179,7 +160,11 @@ export default function Home() {
                 <div className="events-grid">
                   {visibleEvents.length > 0 ? (
                     visibleEvents.map(event => (
-                      <div key={event.id} className="event-card">
+                      <div 
+                        key={event.id} 
+                        className={`event-card ${selectedEvent === event.id ? 'event-card-active' : ''}`}
+                        onClick={() => handleEventClick(event.id)}
+                      >
                         <div className="event-header">
                           <h3 className="event-title">{event.name}</h3>
                           <span className="event-category">{getCategoryLabel(event.category)}</span>
@@ -198,6 +183,14 @@ export default function Home() {
                             {formatDate(event.date)}
                           </div>
                         </div>
+                        <div className="event-action">
+                          <button className="view-on-map-btn">
+                            View on Map
+                            <svg className="map-icon" viewBox="0 0 24 24" width="16" height="16">
+                              <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/>
+                            </svg>
+                          </button>
+                        </div>
                       </div>
                     ))
                   ) : (
@@ -209,7 +202,6 @@ export default function Home() {
                   )}
                 </div>
 
-                {/* Load More Button */}
                 {hasMoreEvents && (
                   <div className="load-more-container">
                     <button className="load-more-btn" onClick={loadMoreEvents}>
@@ -219,7 +211,6 @@ export default function Home() {
                   </div>
                 )}
 
-                {/* Show message when all events are loaded */}
                 {!hasMoreEvents && visibleEvents.length > 0 && (
                   <div className="all-loaded">
                     <span>All events loaded</span>
@@ -227,7 +218,6 @@ export default function Home() {
                 )}
               </section>
 
-              {/* Filter Section */}
               <section className="filter-section">
                 <div className="filter-header">
                   <h3 className="filter-title">Filter Events</h3>
@@ -243,7 +233,7 @@ export default function Home() {
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
                     >
-                      {categories.map(category => (
+                      {data.categories.map(category => (
                         <option key={category.value} value={category.value}>
                           {category.label}
                         </option>
@@ -260,11 +250,16 @@ export default function Home() {
             </div>
           </main>
 
-          {/* RIGHT SIDE - MAP */}
           <aside className="map-sidebar">
             <div className="map-container">
               <React.Suspense fallback={<div className="map-loading">Loading map…</div>}>
-                {isClient && <MapComponent />}
+                {isClient && (
+                  <MapComponent 
+                    events={data.events}
+                    selectedEvent={selectedEvent}
+                    onEventSelect={setSelectedEvent}
+                  />
+                )}
               </React.Suspense>
             </div>
           </aside>

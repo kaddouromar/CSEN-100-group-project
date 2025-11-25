@@ -1,0 +1,94 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "name": "Campus Cultural Night",
+      "category": "cultural",
+      "location": "Main Campus Hall",
+      "date": "2024-03-15",
+      "coordinates": [34.7715, 32.4295]
+    },
+    {
+      "id": 2,
+      "name": "Mediterranean Food Festival",
+      "category": "restaurants",
+      "location": "Seaside Plaza",
+      "date": "2024-03-16",
+      "coordinates": [34.7589, 32.4281]
+    },
+    {
+      "id": 3,
+      "name": "Basketball Tournament",
+      "category": "sports",
+      "location": "University Gym",
+      "date": "2024-03-17",
+      "coordinates": [34.7742, 32.4318]
+    },
+    {
+      "id": 4,
+      "name": "Local Art Exhibition",
+      "category": "arts",
+      "location": "City Art Museum",
+      "date": "2024-03-18",
+      "coordinates": [34.7678, 32.4086]
+    },
+    {
+      "id": 5,
+      "name": "Alumni Networking",
+      "category": "networking",
+      "location": "Business Center",
+      "date": "2024-03-19",
+      "coordinates": [34.7721, 32.4332]
+    },
+    {
+      "id": 6,
+      "name": "Pizza & Pasta Night",
+      "category": "restaurants",
+      "location": "Italian Bistro",
+      "date": "2024-03-20",
+      "coordinates": [34.7603, 32.4257]
+    },
+    {
+      "id": 7,
+      "name": "Yoga Session",
+      "category": "sports",
+      "location": "Wellness Center",
+      "date": "2024-03-21",
+      "coordinates": [34.7698, 32.4305]
+    },
+    {
+      "id": 8,
+      "name": "Live Jazz Concert",
+      "category": "music",
+      "location": "Rooftop Bar",
+      "date": "2024-03-22",
+      "coordinates": [34.7562, 32.4123]
+    },
+    {
+      "id": 9,
+      "name": "Tech Workshop",
+      "category": "workshops",
+      "location": "Innovation Lab",
+      "date": "2024-03-23",
+      "coordinates": [34.7735, 32.4341]
+    },
+    {
+      "id": 10,
+      "name": "Beach Volleyball",
+      "category": "sports",
+      "location": "Sunset Beach",
+      "date": "2024-03-24",
+      "coordinates": [34.7518, 32.4015]
+    }
+  ],
+  "categories": [
+    { "value": "all", "label": "All Categories" },
+    { "value": "restaurants", "label": "Restaurants & Food" },
+    { "value": "sports", "label": "Sports & Fitness" },
+    { "value": "arts", "label": "Arts & Culture" },
+    { "value": "music", "label": "Music & Entertainment" },
+    { "value": "workshops", "label": "Workshops & Learning" },
+    { "value": "networking", "label": "Networking & Social" },
+    { "value": "cultural", "label": "Cultural Events" }
+  ]
+}
