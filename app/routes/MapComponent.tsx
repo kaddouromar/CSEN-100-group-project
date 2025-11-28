@@ -12,7 +12,7 @@ const CYPRUS_BOUNDS: L.LatLngBoundsExpression = [
 ];
 
 const DefaultIcon = new L.Icon({
-  iconUrl: "images/waypoint.png",
+  iconUrl: "public/waypoint.png",
   iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
   // shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
   iconSize: [25, 30],
