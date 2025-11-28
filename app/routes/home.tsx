@@ -17,7 +17,7 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMoreEvents, setHasMoreEvents] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState<number | null>(null);
+  const [selectedItem, setSelectedItem] = useState<number | null>(null); // Changed from selectedEvent
 
   useEffect(() => setIsClient(true), []);
 
@@ -29,7 +29,7 @@ export default function Home() {
       setFilteredEvents(data.events.filter(event => event.category === selectedCategory));
     }
     setCurrentPage(1);
-    setSelectedEvent(null); // Reset selected event when filter changes
+    setSelectedItem(null); // Reset selected item when filter changes
   }, [selectedCategory]);
 
   // Update visible events when filtered events or page changes
@@ -47,10 +47,8 @@ export default function Home() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleEventClick = (eventId: number) => {
-    setSelectedEvent(eventId);
-    // Scroll to top to see the map movement better
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleItemClick = (itemId: number) => { // Changed from handleEventClick
+    setSelectedItem(itemId);
   };
 
   const getCategoryLabel = (categoryValue: string) => {
@@ -73,17 +71,21 @@ export default function Home() {
           <div className="nav-brand">
             <span className="brand-text">AUB Mediterraneo</span>
           </div>
-          
+
           <div className="nav-menu-container">
             <button 
-              className={`nav-toggle ${isMenuOpen ? 'active' : ''}`} 
-              onClick={toggleMenu}
-              type="button"
-            >
-              <span className="toggle-line"></span>
-              <span className="toggle-line"></span>
-              <span className="toggle-line"></span>
-            </button>
+  className={`nav-toggle ${isMenuOpen ? 'opened' : ''}`}
+  onClick={toggleMenu}
+  type="button"
+  aria-label="Main Menu"
+  aria-expanded={isMenuOpen}
+>
+  <svg width="30" height="30" viewBox="0 0 100 100">
+    <path className="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+    <path className="line line2" d="M 20,50 H 80" />
+    <path className="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+  </svg>
+</button>
 
             <div className={`nav-dropdown ${isMenuOpen ? 'active' : ''}`}>
               <div className="dropdown-header">
@@ -92,32 +94,26 @@ export default function Home() {
               <div className="dropdown-content">
                 <a href="#" className="dropdown-item">
                   <svg className="dropdown-icon" viewBox="0 0 24 24" width="20" height="20">
-                    <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
                   </svg>
-                  About
+                  Locations
                 </a>
                 <a href="#" className="dropdown-item">
                   <svg className="dropdown-icon" viewBox="0 0 24 24" width="20" height="20">
-                    <path fill="currentColor" d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/>
+                    <path fill="currentColor" d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" />
                   </svg>
                   Events
                 </a>
                 <a href="#" className="dropdown-item">
                   <svg className="dropdown-icon" viewBox="0 0 24 24" width="20" height="20">
-                    <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    <path fill="currentColor" d="M16 11V3H8v6H2v12h20V11h-6zm-6-6h4v14h-4V5zm-6 6h4v8H4v-8zm16 8h-4v-6h4v6z" />
                   </svg>
-                  Contact
-                </a>
-                <a href="#" className="dropdown-item">
-                  <svg className="dropdown-icon" viewBox="0 0 24 24" width="20" height="20">
-                    <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                  </svg>
-                  Profile
+                  Leaderboard
                 </a>
                 <div className="dropdown-divider"></div>
                 <a href="#" className="dropdown-item sign-in">
                   <svg className="dropdown-icon" viewBox="0 0 24 24" width="20" height="20">
-                    <path fill="currentColor" d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                    <path fill="currentColor" d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
                   </svg>
                   Sign In
                 </a>
@@ -145,44 +141,52 @@ export default function Home() {
               <section className="events-section">
                 <div className="section-header">
                   <h2 className="section-title">
-                    {selectedCategory === 'all' ? 'All Events & Places' : getCategoryLabel(selectedCategory)}
+                    {selectedCategory === 'all' ? 'EVENTS' : getCategoryLabel(selectedCategory)}
                   </h2>
                   <div className="events-count">
                     {visibleEvents.length} of {filteredEvents.length} events
                   </div>
                 </div>
-                
+
                 <div className="events-grid">
                   {visibleEvents.length > 0 ? (
                     visibleEvents.map(event => (
-                      <div 
-                        key={event.id} 
-                        className={`event-card ${selectedEvent === event.id ? 'event-card-active' : ''}`}
-                        onClick={() => handleEventClick(event.id)}
+                      <div
+                        key={event.id}
+                        className={`event-card ${selectedItem === event.id ? 'event-card-active' : ''}`}
                       >
                         <div className="event-header">
-                          <h3 className="event-title">{event.name}</h3>
+                          <h3
+                            className="event-title"
+                            onClick={() => handleItemClick(event.id)}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            {event.name}
+                          </h3>
                           <span className="event-category">{getCategoryLabel(event.category)}</span>
                         </div>
                         <div className="event-details">
                           <div className="event-location">
                             <svg className="icon" viewBox="0 0 24 24" width="16" height="16">
-                              <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/>
+                              <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
                             </svg>
                             {event.location}
                           </div>
                           <div className="event-date">
                             <svg className="icon" viewBox="0 0 24 24" width="16" height="16">
-                              <path fill="currentColor" d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                              <path fill="currentColor" d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
                             </svg>
                             {formatDate(event.date)}
                           </div>
                         </div>
                         <div className="event-action">
-                          <button className="view-on-map-btn">
+                          <button
+                            className="view-on-map-btn"
+                            onClick={() => handleItemClick(event.id)}
+                          >
                             View on Map
                             <svg className="map-icon" viewBox="0 0 24 24" width="16" height="16">
-                              <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/>
+                              <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
                             </svg>
                           </button>
                         </div>
@@ -223,7 +227,7 @@ export default function Home() {
                 </div>
                 <div className="filter-controls">
                   <div className="custom-select">
-                    <select 
+                    <select
                       className="select-input"
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
@@ -236,7 +240,7 @@ export default function Home() {
                     </select>
                     <div className="select-arrow">
                       <svg viewBox="0 0 24 24" width="16" height="16">
-                        <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+                        <path fill="currentColor" d="M7 10l5 5 5-5z" />
                       </svg>
                     </div>
                   </div>
@@ -249,10 +253,11 @@ export default function Home() {
             <div className="map-container">
               <React.Suspense fallback={<div className="map-loading">Loading map…</div>}>
                 {isClient && (
-                  <MapComponent 
+                  <MapComponent
+                    locations={data.locations} // ADD THIS LINE
                     events={data.events}
-                    selectedEvent={selectedEvent}
-                    onEventSelect={setSelectedEvent}
+                    selectedItem={selectedItem} // Changed from selectedEvent
+                    onItemSelect={setSelectedItem} // Changed from onEventSelect
                   />
                 )}
               </React.Suspense>
