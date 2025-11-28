@@ -112,10 +112,17 @@ export default function MapComponent({ events, selectedEvent, onEventSelect }: M
               <p><strong>Location:</strong> {event.location}</p>
               <p><strong>Date:</strong> {new Date(event.date).toLocaleDateString()}</p>
               <p><strong>Category:</strong> {event.category}</p>
+              <a 
+                href={`/event/${event.id}`} 
+                className="btn btn-sm btn-danger mt-2"
+                style={{ textDecoration: "none", display: "inline-block" }}
+              >
+                View Details
+              </a>
             </div>
           </Popup>
         </Marker>
       ))}
     </MapContainer>
   );
-} 
+}
