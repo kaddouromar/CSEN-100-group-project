@@ -67,9 +67,14 @@ export default function Home() {
   return (
     <>
       <nav className="navbar">
+
+        <div className="nav-menu-container">
+          
+        </div>
+
         <div className="nav-container">
           <div className="nav-brand">
-            <span className="brand-text">AUB Mediterraneo</span>
+            <span className="brand-text">nearU.</span>
           </div>
           </div>
           <div className="nav-menu-container">
