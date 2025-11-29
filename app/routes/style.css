@@ -382,7 +382,7 @@ body {
   margin: 0;
   flex: 1;
   line-height: 1.4;
-  cursor: pointer;
+  /*cursor: pointer;*/
   transition: color 0.2s ease;
 }
 

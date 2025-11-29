@@ -157,8 +157,8 @@ export default function Home() {
                         <div className="event-header">
                           <h3
                             className="event-title"
-                            onClick={() => handleItemClick(event.id)}
-                            style={{ cursor: 'pointer' }}
+                            // onClick={() => handleItemClick(event.id)}
+                            // style={{ cursor: 'pointer' }}
                           >
                             {event.name}
                           </h3>
