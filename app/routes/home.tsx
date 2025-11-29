@@ -120,11 +120,11 @@ export default function Home() {
           <main className="content-main">
             <div className="content-wrapper">
               <header className="page-header">
-                <h1 className="page-title">Campus & Mediterranean Events</h1>
+                <h1 className="page-title">Discover Cyprus Like Never Before</h1>
                 <p className="page-subtitle">
-                  Discover curated events for the AUB Mediterraneo community —
-                  cultural nights, talks, workshops and local meetups tailored to
-                  students and alumni.
+                  Tired of hearing "there's nothing to do in Cyprus"? We're changing that. 
+    From hidden study spots and local food gems to campus events and beach activities, 
+    find everything students actually love doing in and around AUB Mediterraneo.
                 </p>
               </header>
 
