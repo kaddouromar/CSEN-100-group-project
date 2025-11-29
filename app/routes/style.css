@@ -1,3 +1,4 @@
+
 :root {
   --aub-red: #840132;
   --aub-red-light: #a5023f;
@@ -71,6 +72,7 @@ body {
 /* Hamburger Menu Container */
 .nav-menu-container {
   position: relative;
+  padding: 40px;
 }
 
 /* Animated Hamburger Menu */
@@ -153,6 +155,7 @@ body {
   z-index: 1001;
   border: 1px solid var(--border);
   margin-top: 10px;
+  margin-right:10px;
 }
 
 .nav-dropdown.active {

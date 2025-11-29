@@ -71,7 +71,7 @@ export default function Home() {
           <div className="nav-brand">
             <span className="brand-text">AUB Mediterraneo</span>
           </div>
-
+          </div>
           <div className="nav-menu-container">
             <button 
   className={`nav-toggle ${isMenuOpen ? 'opened' : ''}`}
@@ -119,7 +119,6 @@ export default function Home() {
                 </a>
               </div>
             </div>
-          </div>
         </div>
       </nav>
 
