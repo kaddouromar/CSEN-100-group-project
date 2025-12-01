@@ -4,8 +4,12 @@
 
 ***
 
+<br />
+
 ## About nearU.
 Tired of hearing "there's nothing to do in Cyprus"? We're changing that. From hidden study spots and local food gems to campus events and beach activities, find everything students actually love doing in and around AUB Mediterraneo.
+
+<br />
 
 ## Features
 
@@ -16,8 +20,12 @@ Tired of hearing "there's nothing to do in Cyprus"? We're changing that. From hi
 | Easy Event Creation/ Participation | Any user can post an event                                                                                                                                                    |
 | Reward System                      | Users gain XP points when pinning locations, offer recommendations and participate in events                                                                                  |
 
+<br />
+
 ## Sample User Persona
 Dave is a 21 year old student living in Paphos, who loves to spend his time going out and discovering new places. He loves living in Paphos, but struggles to find places to go out and have a good time. He tried using Google Maps to search for upcoming events to no avail. His struggle was solved by this map created by students, where he can now instantly discover highly-rated locations based on his friends’ pins and reviews, and easily join events that his peers are hosting or attending. Now Dave enjoys his time going out with his friends, not having to worry about hustling to find new events or locations.
+
+<br />
 
 ## Success Metrics
 
@@ -25,10 +33,14 @@ Dave is a 21 year old student living in Paphos, who loves to spend his time goin
 * Number of Events: There should be multiple consecutive events happening every month
 * Sponsorships: In order to keep a consistent flow of users, we would sponsor events to gain more users
 
+<br />
+
 ## Tech Stack
 
 * Frontend: React framework with all necessary styling and JS files
 * Architecture: Amazon AWS
+
+<br />
 
 ## Risks & Solutions
 
