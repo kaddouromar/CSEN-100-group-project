@@ -72,6 +72,7 @@ body {
 .nav-menu-container {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 /* Animated Hamburger Menu */
