@@ -1,4 +1,3 @@
-
 :root {
   --aub-red: #840132;
   --aub-red-light: #a5023f;
@@ -71,31 +70,30 @@ body {
 
 /* Hamburger Menu Container */
 .nav-menu-container {
-  position: relative;
-  padding: 40px;
+  display: flex;
+  align-items: center;
 }
 
 /* Animated Hamburger Menu */
 .nav-toggle {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-  cursor: pointer;
+  width: 40px;
+  height: 32px;
+  /*border-radius: 999px;*/
+  /*border: 1px solid rgba(148, 163, 184, 0.5);*/
+  /*background: rgba(15, 23, 42, 0.8);*/
   display: flex;
-  padding: 8px;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1002;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 10px;
+  margin-right: 40px;
+  cursor: pointer;
 }
 
-.nav-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
-}
-
-.nav-toggle svg {
-  width: 30px;
-  height: 30px;
+.toggle-line {
+  height: 2px;
+  border-radius: 999px;
+  background: #e5e7eb;
 }
 
 .line {
@@ -155,7 +153,7 @@ body {
   z-index: 1001;
   border: 1px solid var(--border);
   margin-top: 10px;
-  margin-right:10px;
+  margin-right: 10px;
 }
 
 .nav-dropdown.active {
@@ -382,7 +380,7 @@ body {
   margin: 0;
   flex: 1;
   line-height: 1.4;
-  /*cursor: pointer;*/
+  cursor: pointer;
   transition: color 0.2s ease;
 }
 
@@ -859,4 +857,289 @@ body {
     width: 100%;
     max-width: 100%;
   }
+}
+
+/* ===========================================================
+   LEADERBOARD SHADOWS BASED ON RANK
+   ======================================================= */
+
+/* Gold shadow for rank 1 */
+.top-player-card.top-player-gold:hover,
+.ranking-item.gold-row:hover {
+  box-shadow: 0 8px 25px rgba(250, 204, 21, 0.4);
+}
+
+.top-player-card.top-player-gold:active,
+.ranking-item.gold-row:active {
+  box-shadow: 0 4px 15px rgba(250, 204, 21, 0.6);
+}
+
+/* Silver shadow for rank 2 */
+.top-secondary-card.top-player-silver:hover,
+.ranking-item.silver-row:hover {
+  box-shadow: 0 8px 25px rgba(148, 163, 184, 0.4);
+}
+
+.top-secondary-card.top-player-silver:active,
+.ranking-item.silver-row:active {
+  box-shadow: 0 4px 15px rgba(148, 163, 184, 0.6);
+}
+
+/* Bronze shadow for rank 3 */
+.top-secondary-card.top-player-bronze:hover,
+.ranking-item.bronze-row:hover {
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+}
+
+.top-secondary-card.top-player-bronze:active,
+.ranking-item.bronze-row:active {
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.6);
+}
+
+/* Normal burgundy shadow for ranks 4+ */
+.ranking-item:not(.gold-row):not(.silver-row):not(.bronze-row):hover {
+  box-shadow: 0 8px 25px rgba(128, 0, 32, 0.3);
+}
+
+.ranking-item:not(.gold-row):not(.silver-row):not(.bronze-row):active {
+  box-shadow: 0 4px 15px rgba(128, 0, 32, 0.5);
+}
+
+/* Ensure all ranking items have transition for smooth shadow effects */
+.top-player-card,
+.top-secondary-card,
+.ranking-item {
+  transition: all 0.3s ease;
+  box-shadow: none; /* Remove any existing shadows */
+}
+
+/* Current user specific shadow */
+.ranking-item.current-user:hover {
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+}
+
+.ranking-item.current-user:active {
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.6);
+}
+
+/* Fix Leaderboard Header Alignment */
+.page-header.leaderboard-header {
+  display: grid !important;
+  grid-template-columns: 40px 1fr 40px !important;
+  align-items: center !important;
+  justify-items: center !important;
+  margin-bottom: 30px !important;
+  gap: 20px !important;
+  padding: 20px 0 !important;
+  width: 100% !important;
+  flex-direction: row !important;
+  text-align: center !important;
+}
+
+.leaderboard-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--aub-red);
+  margin: 0;
+  text-align: center;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+/* Leaderboard Buttons */
+.back-button,
+.info-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  border: 2px solid var(--aub-red);
+  border-radius: 999px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 40px;
+  height: 40px;
+  box-shadow: none;
+}
+
+.back-button svg,
+.info-button svg {
+  width: 24px;
+  height: 24px;
+  color: var(--aub-red);
+}
+
+.back-button:hover,
+.info-button:hover {
+  transform: translateY(-1px);
+  background: rgba(132, 1, 50, 0.1);
+  border-color: var(--aub-red-dark);
+  box-shadow: 0 4px 12px rgba(132, 1, 50, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .leaderboard-title {
+    font-size: 2rem;
+  }
+  
+  .page-header.leaderboard-header {
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 10px !important;
+  }
+}
+
+/* Leaderboard Sequential Animations */
+.podium-section,
+.ranking-section {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Podium Animation - appears first */
+.podium-section {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.podium-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Daily Stats Message Animation - appears second */
+.daily-stats {
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out 0.4s;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.podium-section.animate-in .daily-stats {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stats-xp,
+.stats-rank,
+.stats-users {
+  color: #ff6b35;
+  font-weight: bold;
+}
+
+/* Individual podium card animations with staggered delay */
+.podium-card {
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.podium-section.animate-in .podium-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.podium-section.animate-in .podium-second {
+  transition-delay: 0.2s;
+}
+
+.podium-section.animate-in .podium-first {
+  transition-delay: 0.4s;
+}
+
+.podium-section.animate-in .podium-third {
+  transition-delay: 0.6s;
+}
+
+/* Ranking Section Animation - appears third */
+.ranking-section {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s;
+}
+
+.ranking-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ranking container animation */
+.ranking-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out 1.0s;
+}
+
+.ranking-section.animate-in .ranking-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Individual ranking item animations with staggered entrance */
+.ranking-item {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.ranking-section.animate-in .ranking-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger the ranking items with progressive delay */
+.ranking-section.animate-in .ranking-item:nth-child(1) { transition-delay: 1.2s; }
+.ranking-section.animate-in .ranking-item:nth-child(2) { transition-delay: 1.3s; }
+.ranking-section.animate-in .ranking-item:nth-child(3) { transition-delay: 1.4s; }
+.ranking-section.animate-in .ranking-item:nth-child(4) { transition-delay: 1.5s; }
+.ranking-section.animate-in .ranking-item:nth-child(5) { transition-delay: 1.6s; }
+
+/* Enhanced podium animations */
+.podium-avatar {
+  transform: scale(0);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+}
+
+.podium-section.animate-in .podium-avatar {
+  transform: scale(1);
+}
+
+.podium-section.animate-in .podium-second .podium-avatar {
+  transition-delay: 0.5s;
+}
+
+.podium-section.animate-in .podium-first .podium-avatar {
+  transition-delay: 0.7s;
+}
+
+.podium-section.animate-in .podium-third .podium-avatar {
+  transition-delay: 0.9s;
+}
+
+/* Medal/badge animations */
+.badge-icon {
+  transform: scale(0) rotate(-180deg);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s;
+}
+
+.podium-section.animate-in .badge-icon {
+  transform: scale(1) rotate(0deg);
+}
+
+.podium-section.animate-in .podium-second .badge-icon {
+  transition-delay: 0.6s;
+}
+
+.podium-section.animate-in .podium-first .badge-icon {
+  transition-delay: 0.8s;
+}
+
+.podium-section.animate-in .podium-third .badge-icon {
+  transition-delay: 1.0s;
 }
