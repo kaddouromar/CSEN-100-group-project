@@ -94,7 +94,7 @@ export default function Home() {
               <h3>Menu</h3>
             </div>
             <div className="dropdown-content">
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="/locations">
                 Locations
               </a>
               <a className="dropdown-item" href="/events">
