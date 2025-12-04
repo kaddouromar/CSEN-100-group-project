@@ -100,7 +100,7 @@ export default function Home() {
               <a className="dropdown-item" href="/events">
                 Events
               </a>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="/leaderboard">
                 Leaderboard
               </a>
               <div className="dropdown-divider" />
