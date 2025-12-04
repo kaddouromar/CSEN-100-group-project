@@ -97,7 +97,7 @@ export default function Home() {
               <a className="dropdown-item" href="#">
                 Locations
               </a>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="/events">
                 Events
               </a>
               <a className="dropdown-item" href="#">
