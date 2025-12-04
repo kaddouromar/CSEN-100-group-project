@@ -39,6 +39,86 @@
       "coordinates": [34.7705, 32.4290],
       "type": "location",
       "rating": 4.0
+    },
+    {
+      "id": 5,
+      "name": "Pafos Archaeological Park",
+      "category": "Sightseeing",
+      "description": "Ancient Roman mosaics, ruins and open-air museum.",
+      "location": "Pafos Archaeological Park",
+      "coordinates": [34.7580, 32.4240],
+      "type": "location",
+      "rating": 4.8
+    },
+    {
+      "id": 6,
+      "name": "Tomb of the Kings",
+      "category": "Sightseeing",
+      "description": "UNESCO site with impressive rock-cut tombs.",
+      "location": "Tomb of the Kings",
+      "coordinates": [34.7612, 32.4228],
+      "type": "location",
+      "rating": 4.7
+    },
+    {
+      "id": 7,
+      "name": "Pafos Harbour",
+      "category": "Leisure",
+      "description": "Harbourfront promenade with cafes, boats and views.",
+      "location": "Pafos Harbour",
+      "coordinates": [34.7510, 32.4220],
+      "type": "location",
+      "rating": 4.6
+    },
+    {
+      "id": 8,
+      "name": "Coral Bay Beach",
+      "category": "Beach",
+      "description": "Popular sandy beach with clear waters and sunbeds.",
+      "location": "Coral Bay",
+      "coordinates": [34.9180, 32.4080],
+      "type": "location",
+      "rating": 4.5
+    },
+    {
+      "id": 9,
+      "name": "Pafos Municipal Library",
+      "category": "Study",
+      "description": "Public library with study spaces and wifi.",
+      "location": "Pafos Library",
+      "coordinates": [34.7525, 32.4235],
+      "type": "location",
+      "rating": 4.2
+    },
+    {
+      "id": 10,
+      "name": "Kings Avenue Mall",
+      "category": "Shopping",
+      "description": "Large indoor mall with shops, food court and cinema.",
+      "location": "Kings Avenue Mall",
+      "coordinates": [34.7615, 32.4230],
+      "type": "location",
+      "rating": 4.1
+    },
+    {
+      "id": 11,
+      "name": "Pafos Old Town Market",
+      "category": "Market",
+      "description": "Local market with crafts, produce and street food.",
+      "location": "Old Town Market",
+      "coordinates": [34.7538, 32.4212],
+      "type": "location",
+      "rating": 4.4
+    },
+    {
+      "id": 12,
+      "name": "Pafos Lighthouse & Promenade",
+      "category": "Leisure",
+      "description": "Scenic lighthouse and coastal walk, great for sunsets.",
+      "location": "Pafos Lighthouse",
+      "coordinates": [34.7508, 32.4207],
+      "type": "location",
+      "rating": 4.6
     }
   ],
   "events": [
@@ -47,7 +127,7 @@
       "name": "Campus Cultural Night",
       "category": "Cultural",
       "location": "Main Campus Hall",
-      "date": "2024-03-15",
+      "date": "2026-03-15",
       "coordinates": [34.7715, 32.4295],
       "type": "event"
     },
@@ -56,7 +136,7 @@
       "name": "Mediterranean Food Festival",
       "category": "Food",
       "location": "Seaside Plaza",
-      "date": "2024-03-16",
+      "date": "2026-03-16",
       "coordinates": [34.7589, 32.4281],
       "type": "event"
     },
@@ -65,7 +145,7 @@
       "name": "Basketball Tournament",
       "category": "Sports",
       "location": "University Gym",
-      "date": "2024-03-17",
+      "date": "2026-03-17",
       "coordinates": [34.7742, 32.4318],
       "type": "event"
     },
@@ -74,7 +154,7 @@
       "name": "Local Art Exhibition",
       "category": "Arts",
       "location": "City Art Museum",
-      "date": "2024-03-18",
+      "date": "2026-03-18",
       "coordinates": [34.7678, 32.4086],
       "type": "event"
     },
@@ -83,7 +163,7 @@
       "name": "Alumni Networking",
       "category": "Networking",
       "location": "Business Center",
-      "date": "2024-03-19",
+      "date": "2026-03-19",
       "coordinates": [34.7721, 32.4332],
       "type": "event"
     },
@@ -92,7 +172,7 @@
       "name": "Pizza & Pasta Night",
       "category": "Food",
       "location": "Italian Bistro",
-      "date": "2024-03-20",
+      "date": "2026-03-20",
       "coordinates": [34.7603, 32.4257],
       "type": "event"
     },
@@ -101,7 +181,7 @@
       "name": "Yoga Session",
       "category": "Sports",
       "location": "Wellness Center",
-      "date": "2024-03-21",
+      "date": "2026-03-21",
       "coordinates": [34.7698, 32.4305],
       "type": "event"
     },
@@ -110,7 +190,7 @@
       "name": "Live Jazz Concert",
       "category": "Music",
       "location": "Rooftop Bar",
-      "date": "2024-03-22",
+      "date": "2026-03-22",
       "coordinates": [34.7562, 32.4123],
       "type": "event"
     },
@@ -119,7 +199,7 @@
       "name": "Tech Workshop",
       "category": "Workshops",
       "location": "Innovation Lab",
-      "date": "2024-03-23",
+      "date": "2026-03-23",
       "coordinates": [34.7735, 32.4341],
       "type": "event"
     },
@@ -128,7 +208,7 @@
       "name": "Beach Volleyball",
       "category": "Sports",
       "location": "Sunset Beach",
-      "date": "2024-03-24",
+      "date": "2026-03-24",
       "coordinates": [34.7518, 32.4015],
       "type": "event"
     }
