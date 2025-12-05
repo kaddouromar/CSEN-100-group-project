@@ -46,17 +46,23 @@ export default function Home() {
     return data.categories.find((c) => c.value === value)?.label || value;
   };
 
-  const formatDate = (dateString: string) =>
-    new Date(dateString).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    });
+  const formatDateTime = (dateString: string) => {
+    const date = new Date(dateString);
+    return {
+      day: date.getDate(),
+      month: date.toLocaleDateString("en-US", { month: "short" }),
+      year: date.getFullYear(),
+      time: date.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      }),
+    };
+  };
 
   return (
     <>
       <nav className="navbar">
-
         {/* LEFT EMPTY SPACER (keeps layout correct) */}
         <div className="nav-menu-container">
           <img src="/favicon.ico" width="64px" height="64px" />
@@ -124,9 +130,9 @@ export default function Home() {
               <header className="page-header">
                 <h1 className="page-title">Discover Cyprus Like Never Before</h1>
                 <p className="page-subtitle">
-                  Tired of hearing "there's nothing to do in Cyprus"? We're changing that. 
-    From hidden study spots and local food gems to campus events and beach activities, 
-    find everything students actually love doing in and around AUB Mediterraneo.
+                  Tired of hearing that there isn't anything to do in Cyprus? We're changing that.
+                  From hidden study spots and local food gems to campus events and beach activities,
+                  find everything students actually love doing in and around AUB Mediterraneo.
                 </p>
               </header>
 
@@ -144,39 +150,70 @@ export default function Home() {
 
                 <div className="events-grid">
                   {visibleEvents.length > 0 ? (
-                    visibleEvents.map((event) => (
-                      <div
-                        key={event.id}
-                        className={`event-card ${
-                          selectedItem === event.id ? "event-card-active" : ""
-                        }`}
-                      >
-                        <div className="event-header">
-                          <h3 className="event-title">{event.name}</h3>
-                          <span className="event-category">
-                            {getCategoryLabel(event.category)}
-                          </span>
-                        </div>
-
-                        <div className="event-details">
-                          <div className="event-location">
-                            {event.location}
+                    visibleEvents.map((event) => {
+                      const dateTime = formatDateTime(event.date);
+                      return (
+                        <div
+                          key={event.id}
+                          className={`event-card ${selectedItem === event.id ? "event-card-active" : ""
+                            }`}
+                        >
+                          <div className="event-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
+                            <h3 className="event-title" style={{ margin: 0 }}>{event.name}</h3>
+                            <span className="event-category" style={{ margin: "0 auto" }}>
+                              {getCategoryLabel(event.category)}
+                            </span>
+                            {/* Date Badge */}
+                            <div style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              backgroundColor: "var(--aub-red)",
+                              color: "white",
+                              padding: "0.5rem 0.75rem",
+                              borderRadius: "var(--radius)",
+                              minWidth: "60px",
+                              textAlign: "center"
+                            }}>
+                              <div style={{ fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase" }}>
+                                {dateTime.month}
+                              </div>
+                              <div style={{ fontSize: "1.75rem", fontWeight: 700, lineHeight: 1 }}>
+                                {dateTime.day}
+                              </div>
+                              <div style={{ fontSize: "0.7rem", opacity: 0.9 }}>
+                                {dateTime.year}
+                              </div>
+                            </div>
                           </div>
-                          <div className="event-date">
-                            {formatDate(event.date)}
+
+                          {/* Location and Time - Centered */}
+                          <div className="event-details" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem", textAlign: "center", marginBottom: "1rem" }}>
+                            <div className="event-location" style={{ display: "flex", alignItems: "center", gap: "0.5rem", justifyContent: "center" }}>
+                              <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: "16px", height: "16px", flexShrink: 0 }}>
+                                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              </svg>
+                              {event.location}
+                            </div>
+                            <div className="event-date" style={{ display: "flex", alignItems: "center", gap: "0.5rem", justifyContent: "center" }}>
+                              <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: "16px", height: "16px", flexShrink: 0 }}>
+                                <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              {dateTime.time}
+                            </div>
+                          </div>
+
+                          <div className="event-action">
+                            <button
+                              className="view-on-map-btn"
+                              onClick={() => handleItemClick(event.id)}
+                            >
+                              View on Map
+                            </button>
                           </div>
                         </div>
-
-                        <div className="event-action">
-                          <button
-                            className="view-on-map-btn"
-                            onClick={() => handleItemClick(event.id)}
-                          >
-                            View on Map
-                          </button>
-                        </div>
-                      </div>
-                    ))
+                      );
+                    })
                   ) : (
                     <div className="empty-state">
                       <div className="empty-icon">📅</div>
@@ -217,9 +254,7 @@ export default function Home() {
                         </option>
                       ))}
                     </select>
-                    <div className="select-arrow">
-                      ▼
-                    </div>
+                    <div className="select-arrow">▼</div>
                   </div>
                 </div>
               </section>

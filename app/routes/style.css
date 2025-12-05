@@ -1,4 +1,3 @@
-
 :root {
   --aub-red: #840132;
   --aub-red-light: #a5023f;
@@ -643,9 +642,14 @@ body {
 
 /* Map Sidebar */
 .map-sidebar {
-  position: sticky;
+  position: fixed;
   top: 110px;
+  right: 2rem;
+  width: clamp(360px, 34vw, 520px);
   height: calc(100vh - 130px);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
 }
 
 .map-container {
@@ -654,7 +658,8 @@ body {
   box-shadow: var(--shadow-md);
   overflow: hidden;
   height: 100%;
-  border: 1px solid var(--border);
+  width: 100%;
+  border: 3px solid var(--aub-red);
 }
 
 .map-loading {
