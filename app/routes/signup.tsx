@@ -89,7 +89,7 @@ export default function Home() {
               </div>
               <button className="submit-button">Sign Up</button>
               <p className="page-subtitle">
-                Already have an account? <a className="switch-form-button">Log in</a>
+                Already have an account? <a className="switch-form-button" href="/login">Log in</a>
               </p>
             </header>
 

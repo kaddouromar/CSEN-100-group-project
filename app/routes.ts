@@ -16,5 +16,16 @@ export default [
   {
     path: "locations",
     file: "routes/locations.tsx"
+  },
+
+  {
+    path: "login",
+    file: "routes/login.tsx"
+  },
+
+  {
+    path: "signup",
+    file: "routes/signup.tsx"
   }
+
 ] satisfies RouteConfig;

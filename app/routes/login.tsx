@@ -69,7 +69,7 @@ export default function Home() {
               </a>
               <div className="dropdown-divider" />
               <a className="dropdown-item sign-in" href="#">
-                Sign In
+                Log In
               </a>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function Home() {
               <a href="" className="forgot-password-button">Forgot my password</a>
               <button className="submit-button">Login</button>
               <p className="page-subtitle">
-                Don't have an account? <a className="switch-form-button">Register</a>
+                Don't have an account? <a className="switch-form-button" href="/signup">Register</a>
               </p>
             </header>
 

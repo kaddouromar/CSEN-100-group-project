@@ -112,8 +112,8 @@ export default function Home() {
                 Leaderboard
               </a>
               <div className="dropdown-divider" />
-              <a className="dropdown-item sign-in" href="#">
-                Sign In
+              <a className="dropdown-item sign-in" href="/login">
+                Log In
               </a>
             </div>
           </div>
