@@ -465,30 +465,34 @@ const LeaderboardPage: React.FC<{
                 <h3>Menu</h3>
               </div>
               <div className="dropdown-content">
-                <a href="#" className="dropdown-item">
+                <a href="/locations" className="dropdown-item">
                   <svg className="dropdown-icon" viewBox="0 0 24 24" width="20" height="20">
                     <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
                   </svg>
                   Locations
                 </a>
-                <button className="dropdown-item" onClick={() => { onBack(); setIsMenuOpen(false); }}>
-                  <svg className="dropdown-icon" viewBox="0 0 24 24" width="20" height="20">
-                    <path fill="currentColor" d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" />
-                  </svg>
-                  Events
-                </button>
-                <button className="dropdown-item leaderboard-btn" onClick={() => setIsMenuOpen(false)}>
-                  <svg className="dropdown-icon" viewBox="0 0 24 24" width="20" height="20">
-                    <path fill="currentColor" d="M16 11V3H8v6H2v12h20V11h-6zm-6-6h4v14h-4V5zm-6 6h4v8H4v-8zm16 8h-4v-6h4v6z" />
-                  </svg>
-                  Leaderboard
-                </button>
+                <a href="/events">
+                  <button className="dropdown-item" onClick={() => { onBack(); setIsMenuOpen(false); }}>
+                    <svg className="dropdown-icon" viewBox="0 0 24 24" width="20" height="20">
+                      <path fill="currentColor" d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" />
+                    </svg>
+                    Events
+                  </button>
+                </a>
+                <a href="/leaderboard">
+                  <button className="dropdown-item leaderboard-btn" onClick={() => setIsMenuOpen(false)}>
+                    <svg className="dropdown-icon" viewBox="0 0 24 24" width="20" height="20">
+                      <path fill="currentColor" d="M16 11V3H8v6H2v12h20V11h-6zm-6-6h4v14h-4V5zm-6 6h4v8H4v-8zm16 8h-4v-6h4v6z" />
+                    </svg>
+                    Leaderboard
+                  </button>
+                </a>
                 <div className="dropdown-divider"></div>
-                <a href="#" className="dropdown-item sign-in">
+                <a href="/login" className="dropdown-item sign-in">
                   <svg className="dropdown-icon" viewBox="0 0 24 24" width="20" height="20">
                     <path fill="currentColor" d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
                   </svg>
-                  Sign In
+                  Log In
                 </a>
               </div>
             </div>
