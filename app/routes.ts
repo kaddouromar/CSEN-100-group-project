@@ -26,6 +26,11 @@ export default [
   {
     path: "signup",
     file: "routes/signup.tsx"
+  },
+
+  {
+    path: "leaderboard",
+    file: "routes/leaderboard.tsx"
   }
 
 ] satisfies RouteConfig;
