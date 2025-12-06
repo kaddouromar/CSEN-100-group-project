@@ -22,6 +22,18 @@ Tired of hearing "there's nothing to do in Cyprus"? We're changing that. From hi
 
 <br />
 
+## Setup Instructions
+
+1. Clone the repository in your desired directory using the following command: `git clone git@github.com:kaddouromar/CSEN-100-group-project.git`
+
+2. Navigate to this directory
+
+3. Install dependencies using: `npm install`. if npm is not installed on your system, follow [this article](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm "npm and node.js guide")
+
+4. Time for the fun part! Run the server by using this command in your terminal: `npm run dev`
+
+<br />
+
 ## Sample User Persona
 Dave is a 21 year old student living in Paphos, who loves to spend his time going out and discovering new places. He loves living in Paphos, but struggles to find places to go out and have a good time. He tried using Google Maps to search for upcoming events to no avail. His struggle was solved by this map created by students, where he can now instantly discover highly-rated locations based on his friends’ pins and reviews, and easily join events that his peers are hosting or attending. Now Dave enjoys his time going out with his friends, not having to worry about hustling to find new events or locations.
 
@@ -38,7 +50,7 @@ Dave is a 21 year old student living in Paphos, who loves to spend his time goin
 ## Tech Stack
 
 * Frontend: React framework with all necessary styling and JS files
-* Architecture: Amazon AWS
+* Architecture: Amazon AWS (currently still in the works...)
 
 <br />
 
