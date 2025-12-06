@@ -173,7 +173,12 @@ export default function MapComponent({ locations, events, selectedItem, onItemSe
               <a 
                 href={`/event/${event.id}`} 
                 className="btn btn-sm btn-danger mt-2"
-                style={{ textDecoration: "none", display: "inline-block" }}
+                style={{ 
+                  textDecoration: "none", 
+                  display: "inline-block",
+                  color: "white",
+                  backgroundColor: "#840132"
+                }}
               >
                 View Details
               </a>
