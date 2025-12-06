@@ -32,6 +32,8 @@ Tired of hearing "there's nothing to do in Cyprus"? We're changing that. From hi
 
 4. Time for the fun part! Run the server by using this command in your terminal: `npm run dev`
 
+5. Enjoy!
+
 <br />
 
 ## Sample User Persona
