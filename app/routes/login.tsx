@@ -21,7 +21,9 @@ export default function Home() {
     <nav className="navbar">
         {/* LEFT EMPTY SPACER (keeps layout correct) */}
         <div className="nav-menu-container">
-          <img src="/favicon.ico" width="64px" height="64px" />
+          <a href="/">
+            <img src="/favicon.ico" width="64px" height="64px" />
+          </a>
         </div>
 
         {/* CENTER BRAND */}
